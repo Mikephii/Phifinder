@@ -63,6 +63,7 @@ const ActionBar = (props) => {
         <BottomNavigation
           style={{
             width: "100%",
+
             position: "fixed",
             bottom: -1,
             backgroundColor: "#202124",
@@ -76,26 +77,37 @@ const ActionBar = (props) => {
         >
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-between",
+              margin: "auto",
               width: "80%",
+              maxWidth: "400px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <BottomNavigationButton
-              label="Explore"
-              icon={<SearchIcon />}
-              href="/groups"
-            />
-            <BottomNavigationButton
-              label="New Post"
-              icon={<AddIcon />}
-              href="/author"
-            />
-            <BottomNavigationButton
-              label="Earnings"
-              icon={<TrendingUpIcon />}
-              href="/dashboard"
-            />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "80%",
+              }}
+            >
+              <BottomNavigationButton
+                label="Explore"
+                icon={<SearchIcon />}
+                href="/groups"
+              />
+              <BottomNavigationButton
+                label="New Post"
+                icon={<AddIcon />}
+                href="/author"
+              />
+              <BottomNavigationButton
+                label="Earnings"
+                icon={<TrendingUpIcon />}
+                href="/dashboard"
+              />
+            </div>
           </div>
         </BottomNavigation>
       </HideOnScroll>
