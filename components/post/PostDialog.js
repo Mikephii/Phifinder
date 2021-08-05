@@ -65,13 +65,7 @@ const PostDialog = (props) => {
     </div>
   ) : (
     <Grid container spacing={4} justify="center">
-      <Grid item sm={5}>
-        <img
-          src={props.post.userImage}
-          alt=""
-          className={classes.profileImage}
-        />
-      </Grid>
+      <Grid item sm={5}></Grid>
       <Grid item sm={7}>
         <Link href={`/users/${props.post.userHandle}`} passHref>
           <Typography color="primary" variant="h5">
