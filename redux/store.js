@@ -15,10 +15,10 @@ const reducers = combineReducers({
   UI: uiReducer,
 });
 
-const composeEnhancer =
-  typeof window !== "undefined"
-    ? window.__REDUX_DEVTOOLS_EXTENSION__() || compose
-    : compose;
+//const composeEnhancer =
+// typeof window !== "undefined"
+//  ? window.__REDUX_DEVTOOLS_EXTENSION__() || compose
+//  : compose;
 
 const store = createStore(
   reducers,
