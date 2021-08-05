@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 //import { Link } from "react-router-dom/";
 import Link from "next/link";
+import Image from "next/image";
 import PropTypes from "prop-types";
 
 //Components
@@ -20,6 +21,7 @@ import { FormControl } from "@material-ui/core";
 import { InputLabel } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 //icons
+import Phifinder from "../../public/images/logo2.svg";
 import AddIcon from "@material-ui/icons/Add";
 
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -60,13 +62,9 @@ const NavBar = (props) => {
             >
               <NavMenu />
               <Link href="/home" passHref>
-                <Typography
-                  variant="h4"
-                  color="primary"
-                  style={{ fontWeight: 900 }}
-                >
-                  Phifinder
-                </Typography>
+                <Link href="/home" passHref>
+                  <Image src={Phifinder} alt="Phifinder" />
+                </Link>
               </Link>
               <Notifications />
             </div>
@@ -85,9 +83,7 @@ const NavBar = (props) => {
                 <Button color="primary">Login</Button>
               </Link>
               <Link href="/home" passHref>
-                <Typography variant="h4" color="primary">
-                  Phifinder
-                </Typography>
+                <Image src={Phifinder} alt="Phifinder" />
               </Link>
 
               <Link href="/signup" passHref>
