@@ -38,7 +38,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
       //history.push("/");
-      Router.push("/");
+      Router.push("/subscribe");
     })
     .catch((err) => {
       dispatch({ type: SET_ERRORS, payload: err.response.data });

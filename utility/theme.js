@@ -41,9 +41,18 @@ const theme = createMuiTheme({
       margin: "20px auto 20px auto",
       position: "relative",
     },
+    inputMargin: { margin: "10px auto 10px auto" },
     textField: {
       margin: "10px auto 10px auto",
+      borderRadius: 40,
+
+      [`& fieldset`]: {
+        borderRadius: 40,
+        background: "#202124",
+        zIndex: -1,
+      },
     },
+
     customError: {
       color: "#f44336",
       fontSize: "0.8rem",

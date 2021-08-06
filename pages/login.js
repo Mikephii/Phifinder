@@ -4,7 +4,7 @@ import propTypes from "prop-types";
 import Link from "next/link";
 import Image from "next/image";
 //resources
-import AppLogo from "../public/images/phi-logo.png";
+import AppLogo from "../public/icon.svg";
 
 //MUI stuff
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -17,8 +17,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 //REDUX STUFF
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
-
-const styles = (theme) => ({ ...theme.spreadMe });
 
 const Login = (props) => {
   //destructure props
@@ -59,67 +57,72 @@ const Login = (props) => {
   };
 
   return (
-    <Grid container className={classes.form}>
-      <Grid item sm />
-      <Grid item sm>
-        <div className={classes.logo}>
-          <Image src={AppLogo} alt="" layout="fill" />
-        </div>
+    <div className={classes.container}>
+      <div className={classes.phiContainer}>
+        <Image src={AppLogo} alt="" width={100} height={50} />
+      </div>
 
-        <Typography variant="h2" className={classes.pageTitle}>
+      <Typography variant="h2" className={classes.pageTitle}>
+        Login
+      </Typography>
+
+      <form noValidate onSubmit={handleSubmit} className={classes.loginForm}>
+        <TextField
+          id="email"
+          name="email"
+          type="email"
+          label="Email"
+          variant="outlined"
+          size="small"
+          className={classes.textField}
+          value={email}
+          helperText={errors.email}
+          error={errors.email ? true : false}
+          onChange={handleEmailChange}
+          fullWidth
+        />
+        <TextField
+          id="password"
+          name="password"
+          type="password"
+          label="Password"
+          variant="outlined"
+          size="small"
+          className={classes.textField}
+          value={password}
+          helperText={errors.password}
+          error={errors.password ? true : false}
+          onChange={handlePasswordChange}
+          fullWidth
+        />
+        {errors.general && (
+          <Typography variant="body2" className={classes.customError}>
+            {errors.general}
+          </Typography>
+        )}
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          disabled={loading}
+        >
           Login
-        </Typography>
-
-        <form noValidate onSubmit={handleSubmit}>
-          <TextField
-            id="email"
-            name="email"
-            type="email"
-            label="Email"
-            className={classes.textField}
-            value={email}
-            helperText={errors.email}
-            error={errors.email ? true : false}
-            onChange={handleEmailChange}
-            fullWidth
-          />
-          <TextField
-            id="password"
-            name="password"
-            type="password"
-            label="Password"
-            className={classes.textField}
-            value={password}
-            helperText={errors.password}
-            error={errors.password ? true : false}
-            onChange={handlePasswordChange}
-            fullWidth
-          />
-          {errors.general && (
-            <Typography variant="body2" className={classes.customError}>
-              {errors.general}
-            </Typography>
+          {loading && (
+            <CircularProgress size={30} className={classes.progress} />
           )}
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            disabled={loading}
-          >
-            Login
-            {loading && (
-              <CircularProgress size={30} className={classes.progress} />
-            )}
-          </Button>
-          <br />
-          <small>
-            dont have an account? <Link href="/signup">Sign up here!</Link>
-          </small>
-        </form>
-      </Grid>
-      <Grid item sm />
-    </Grid>
+        </Button>
+        <br />
+        <div style={{ display: "flex" }}>
+          <Typography style={{ whiteSpace: "pre" }} variant="body2">
+            dont have an account?{"  "}
+          </Typography>
+          <Typography variant="body2" color="secondary">
+            <Link href="/signup"> Sign up here!</Link>
+          </Typography>
+        </div>
+      </form>
+    </div>
   );
 };
 
@@ -139,7 +142,27 @@ const mapActionsToProps = {
   loginUser,
 };
 
+const styles = (theme) => ({
+  ...theme.spreadMe,
+  container: {
+    marginTop: 80,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    margin: "auto",
+    width: "80%",
+    maxWidth: 400,
+  },
+  phiContainer: { margin: "auto" },
+  loginForm: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "Column",
+    alignItems: "center",
+  },
+});
+
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(withStyles(styles)(Login));
+)(withStyles(styles, { withTheme: true })(Login));

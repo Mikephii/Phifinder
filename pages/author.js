@@ -185,7 +185,7 @@ const NewPost = (props) => {
               placeholder="blah blah blah..."
               error={errors.title ? true : false}
               helperText={errors.title}
-              className={classes.textField}
+              className={classes.inputMargin}
               onChange={handleTitleChange}
               fullWidth
             ></TextField>
