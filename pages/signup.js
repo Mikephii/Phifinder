@@ -158,7 +158,7 @@ const Signup = (props) => {
             Already have an account?{"  "}
           </Typography>
           <Typography variant="body2" color="secondary">
-            <Link href="/login"> Login here!</Link>
+            <Link href="/subscribe"> Login here!</Link>
           </Typography>
         </div>
       </form>

@@ -2,7 +2,7 @@ import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import theme from "../utility/theme";
-
+import Script from "next/script";
 export default class MyDocument extends Document {
   render() {
     return (
@@ -14,6 +14,11 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+          <script
+            async
+            src="https://www.paypal.com/sdk/js?client-id=AUpPgih8NRv7o9K6hV6tTIi8Dp7LW6yKHHsq6aT7bco8OaAr80ahJ0zY6ZgbW5ROl8h9NGjuGF1I4W9U&vault=true&intent=subscription"
+            data-sdk-integration-source="button-factory"
+          ></script>
         </Head>
         <body>
           <Main />

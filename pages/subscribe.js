@@ -1,10 +1,12 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import propTypes from "prop-types";
 //import { Link } from "react-router-dom";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
+import { useRouter } from "next/router";
 //resources
-import AppLogo from "../images/phi-logo.png";
+import AppLogo from "../public/icon.svg";
 
 //MUI stuff
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -17,8 +19,10 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 //REDUX STUFF
 import { connect } from "react-redux";
 import { signupUser } from "../redux/actions/userActions";
+import axios from "axios";
 
 const Subscribe = (props) => {
+  const Router = useRouter();
   //DESTRUCTURE
   const {
     classes,
@@ -26,6 +30,7 @@ const Subscribe = (props) => {
   } = props;
   //STATE
 
+  //old errors state
   const [errors, setErrors] = useState({});
 
   //map global state from props to local state
@@ -35,80 +40,46 @@ const Subscribe = (props) => {
     }
   }, [props.UI.errors]);
 
-  //HANDLERS
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const newUserData = {
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword,
-      handle: handle,
-    };
-
-    props.signupUser(newUserData, props.history);
+  const paypalScript = () => {
+    console.log("paypalScript");
+    //namespace provided by script tag in head of _document.js
+    window.paypal
+      .Buttons({
+        style: {
+          shape: "pill",
+          color: "gold",
+          layout: "vertical",
+          label: "paypal",
+        },
+        createSubscription: function (data, actions) {
+          return actions.subscription.create({
+            /* Creates the subscription */
+            plan_id: "P-315093088M773420EMEHXQCA",
+          });
+        },
+        onApprove: function (data, actions) {
+          alert(data.subscriptionID); // You can add optional success message for the subscriber here
+        },
+      })
+      .render(paypalDiv.current); // Renders the PayPal button
   };
 
-  const handleEmailChange = (event) => {};
+  useEffect(() => {
+    paypalScript();
+  });
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
-  };
-
-  const handleHandleChange = (event) => {
-    setHandle(event.target.value);
-  };
+  const paypalDiv = useRef();
 
   return (
     <div className={classes.container}>
-      <div className={classes.logo}>
-        <Image src={AppLogo} alt="" layout="fill" />
+      <div className={classes.phiContainer}>
+        <Image src={AppLogo} alt="" width={100} height={50} />
       </div>
       <Typography variant="h2" className={classes.pageTitle}>
-        Signup
+        Subscribe
       </Typography>
 
-      <form noValidate onSubmit={handleSubmit}>
-        <TextField
-          variant="outlined"
-          size="small"
-          id="email"
-          name="email"
-          type="email"
-          label="Email"
-          className={classes.textField}
-          helperText={"helpertext"}
-          error={errors.email ? true : false}
-          onChange={handleEmailChange}
-          fullWidth
-        />
-
-        {errors.general && (
-          <Typography variant="body2" className={classes.customError}>
-            {errors.general}
-          </Typography>
-        )}
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          disabled={loading}
-        >
-          Signup
-          {loading && (
-            <CircularProgress size={30} className={classes.progress} />
-          )}
-        </Button>
-        <br />
-        <small>
-          already have an account? <Link href="/login">Login here!</Link>
-        </small>
-      </form>
+      <div ref={paypalDiv}></div>
     </div>
   );
 };
@@ -132,13 +103,22 @@ const mapActionsToProps = { signupUser };
 const styles = (theme) => ({
   ...theme.spreadMe,
   container: {
+    marginTop: 80,
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
     margin: "auto",
     width: "80%",
     maxWidth: 400,
   },
+  phiContainer: { margin: "auto" },
 });
+
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}
 
 export default connect(
   mapStateToProps,

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
+import Script from "next/script";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../utility/theme";
@@ -14,6 +15,13 @@ import store from "../redux/store";
 import { SET_AUTHENTICATED } from "../redux/types";
 import { logoutUser, getUserData } from "../redux/actions/userActions";
 import jwtDecode from "jwt-decode";
+
+//STRIPE STUFF
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+const promise = loadStripe(
+  "pk_test_51JLfohDx0SeN3CQimSkDHnlgUEdFwEyHFRWqtOegcv4eoFULJYdfp7TW2jQhOtLb3e9Ww0689y5eRzfRhk8cjjWt00Gh5W96Lf"
+);
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -30,7 +38,7 @@ export default function MyApp(props) {
   //https://australia-southeast1-socialape-67dbc.cloudfunctions.net
 
   axios.defaults.baseURL =
-    "https://australia-southeast1-socialape-67dbc.cloudfunctions.net/api";
+    "http://localhost:5000/socialape-67dbc/australia-southeast1/api";
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
