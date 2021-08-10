@@ -28,9 +28,7 @@ const FeedController = (props) => {
   const { authenticated, classes, joinedGroups } = props;
   const Router = useRouter();
   const [group, setGroup] = React.useState(props.group ? props.group : "");
-  const [homeSelected, setHomeSelected] = React.useState(
-    Router.asPath === "/home" || Router.asPath === "/" ? true : false
-  );
+  const [homeSelected, setHomeSelected] = React.useState(true);
   const [popularSelected, setPopularSelected] = React.useState(
     Router.asPath === "/popular" ? true : false
   );
