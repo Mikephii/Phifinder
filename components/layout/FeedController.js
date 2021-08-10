@@ -37,7 +37,11 @@ const FeedController = (props) => {
 
   useEffect(() => {
     setGroup(props.group);
-  }, [props.group]);
+    setPopularSelected(Router.asPath === "/popular" ? true : false);
+    setHomeSelected(
+      Router.asPath === "/home" || Router.asPath === "/" ? true : false
+    );
+  }, [props.group, setPopularSelected, setHomeSelected, Router.asPath]);
 
   const handleChange = (event) => {
     setGroup(event.target.value);
