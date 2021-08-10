@@ -124,12 +124,6 @@ const styles = (theme) => ({
   phiContainer: { margin: "auto" },
 });
 
-export async function getServerSideProps(context) {
-  return {
-    props: {}, // will be passed to the page component as props
-  };
-}
-
 export default connect(
   mapStateToProps,
   mapActionsToProps
