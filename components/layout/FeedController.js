@@ -29,7 +29,7 @@ const FeedController = (props) => {
   const Router = useRouter();
   const [group, setGroup] = React.useState(props.group ? props.group : "");
   const [homeSelected, setHomeSelected] = React.useState(
-    Router.asPath === "/home" ? true : false
+    Router.asPath === "/home" || Router.asPath === "/" ? true : false
   );
   const [popularSelected, setPopularSelected] = React.useState(
     Router.asPath === "/popular" ? true : false
@@ -91,7 +91,7 @@ const FeedController = (props) => {
                     style={{
                       fontSize: 16,
                       fontStrength: 600,
-                      color: "inherit",
+                      color: "white",
                     }}
                   >
                     Home
@@ -109,7 +109,7 @@ const FeedController = (props) => {
                     style={{
                       fontSize: 16,
                       fontStrength: 600,
-                      color: "inherit",
+                      color: "white",
                     }}
                   >
                     Popular
