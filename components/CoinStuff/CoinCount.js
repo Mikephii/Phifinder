@@ -22,7 +22,7 @@ function CoinCount(props) {
 }
 
 const styles = {
-  container: {
+  container: { 
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

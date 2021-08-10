@@ -5,8 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
 import { useRouter } from "next/router";
+import axios from "axios";
 //resources
 import AppLogo from "../public/icon.svg";
+
+//Custom components
+import PayPal from "../components/payPal/PayPal";
 
 //MUI stuff
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -19,7 +23,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 //REDUX STUFF
 import { connect } from "react-redux";
 import { signupUser } from "../redux/actions/userActions";
-import axios from "axios";
 
 const Subscribe = (props) => {
   const Router = useRouter();
@@ -54,11 +57,16 @@ const Subscribe = (props) => {
         createSubscription: function (data, actions) {
           return actions.subscription.create({
             /* Creates the subscription */
-            plan_id: "P-315093088M773420EMEHXQCA",
+            plan_id: "P-5A085181AT0150813MEIHYHI",
           });
         },
         onApprove: function (data, actions) {
-          alert(data.subscriptionID); // You can add optional success message for the subscriber here
+          let subscriptionID = data.subscriptionID;
+          axios
+            .post("/subscribed", { subscriptionID: subscriptionID })
+            .then(() => {
+              Router.push("/success");
+            });
         },
       })
       .render(paypalDiv.current); // Renders the PayPal button
@@ -66,7 +74,7 @@ const Subscribe = (props) => {
 
   useEffect(() => {
     paypalScript();
-  });
+  }, []);
 
   const paypalDiv = useRef();
 
@@ -83,6 +91,8 @@ const Subscribe = (props) => {
     </div>
   );
 };
+
+//<div ref={paypalDiv}></div>
 
 Subscribe.propTypes = {
   classes: propTypes.object.isRequired,

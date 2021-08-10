@@ -10,6 +10,11 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content={theme.palette.primary.main}
+          ></meta>
+          <meta name="apple-mobile-web-app-capable" content="yes"></meta>
           <meta name="mobile-web-app-capable" content="yes"></meta>
           <link
             rel="stylesheet"
@@ -17,7 +22,7 @@ export default class MyDocument extends Document {
           />
           <script
             async
-            src="https://www.paypal.com/sdk/js?client-id=AUpPgih8NRv7o9K6hV6tTIi8Dp7LW6yKHHsq6aT7bco8OaAr80ahJ0zY6ZgbW5ROl8h9NGjuGF1I4W9U&vault=true&intent=subscription"
+            src="https://www.paypal.com/sdk/js?client-id=Aa1hHDkEgGp1zJfB9rEDy2-0ow2pju03oVh5CNVD_Rmkq5v0dAY2tTjJso8_cIvKzZs6wIR8eaTCFCGO&vault=true&intent=subscription"
             data-sdk-integration-source="button-factory"
           ></script>
         </Head>
