@@ -134,9 +134,9 @@ const NewPost = (props) => {
   const groupOptions = joinedGroups ? (
     joinedGroups.map((group) => {
       return (
-        <option key={group} value={group}>
+        <MenuItem key={group} value={group}>
           {group}
-        </option>
+        </MenuItem>
       );
     })
   ) : (
@@ -159,7 +159,6 @@ const NewPost = (props) => {
               <Select
                 error={errors.group ? true : false}
                 helperText={errors.group}
-                native
                 displayEmpty
                 value={group}
                 onChange={handleGroupChange}
@@ -169,7 +168,7 @@ const NewPost = (props) => {
                   id: "group-select",
                 }}
               >
-                <option value="">Group</option>
+                <MenuItem value="">Group</MenuItem>
                 {groupOptions}
               </Select>
               <FormHelperText error={true}>

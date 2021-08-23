@@ -23,7 +23,7 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 //icons
 import AddIcon from "@material-ui/icons/Add";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
-import SearchIcon from "@material-ui/icons/Search";
+import HelpOutline from "@material-ui/icons/HelpOutline";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
@@ -42,6 +42,18 @@ const ActionBar = (props) => {
     Router.asPath === "/popular" ? true : false
   );
 
+  const [hide, setHide] = React.useState(false);
+  useEffect(() => {
+    const hidePages = ["/login", "/signup", "/subscribe", "/about"];
+
+    if (hidePages.includes(Router.asPath)) {
+      console.log("hide");
+      setHide(true);
+    } else {
+      setHide(false);
+    }
+  }, [Router]);
+
   const [value, setValue] = React.useState(1);
 
   useEffect(() => {
@@ -56,6 +68,10 @@ const ActionBar = (props) => {
   const newPost = () => {
     Router.push("/author");
   };
+
+  if (hide) {
+    return null;
+  }
 
   return (
     <Fragment>
@@ -93,9 +109,9 @@ const ActionBar = (props) => {
               }}
             >
               <BottomNavigationButton
-                label="Explore"
-                icon={<SearchIcon />}
-                href="/groups"
+                label="About"
+                icon={<HelpOutline />}
+                href="/about"
               />
               <BottomNavigationButton
                 label="New Post"

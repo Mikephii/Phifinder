@@ -50,7 +50,7 @@ const Home = (props) => {
   return (
     <Fragment>
       <FeedController group={""} />
-      <div style={{ height: 55 }} />
+
       <Grid
         style={{ border: "none" }}
         container
@@ -58,7 +58,7 @@ const Home = (props) => {
         alignItems="center"
         justify="center"
       >
-        <Grid item xs={12} style={{ marginTop: 30 }}>
+        <Grid item xs={12} style={{ marginTop: 85 }}>
           {recentPostsMarkup}
         </Grid>
       </Grid>

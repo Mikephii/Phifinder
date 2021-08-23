@@ -15,7 +15,7 @@ import Select from "@material-ui/core/Select";
 import { FormControl } from "@material-ui/core";
 import { InputLabel } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
-import WithStyles from "@material-ui/styles/withStyles";
+import withStyles from "@material-ui/styles/withStyles";
 //icons
 import AddIcon from "@material-ui/icons/Add";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
@@ -47,12 +47,12 @@ const FeedController = (props) => {
   };
 
   //if no groups becaause not logged in just give these options for groups
-  const groupOptions = joinedGroups ? joinedGroups : ["ASX"];
+  const groupOptions = joinedGroups ? joinedGroups : ["DD"];
   const joinedGroupsMarkup = groupOptions.map((group) => {
     return (
-      <option key={group} value={group}>
+      <MenuItem key={group} value={group}>
         {group}
-      </option>
+      </MenuItem>
     );
   });
 
@@ -127,13 +127,12 @@ const FeedController = (props) => {
                     value={group}
                     onChange={handleChange}
                     displayEmpty
-                    native
                     inputProps={{ "aria-label": "Without label" }}
                     color="primary"
                   >
-                    <option value="" disabled>
+                    <MenuItem value="" disabled>
                       Groups
-                    </option>
+                    </MenuItem>
                     {joinedGroupsMarkup}
                   </Select>
                 </FormControl>
@@ -182,4 +181,4 @@ const styles = {
   },
 };
 
-export default connect(mapStateToProps)(WithStyles(styles)(FeedController));
+export default connect(mapStateToProps)(withStyles(styles)(FeedController));

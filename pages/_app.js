@@ -39,7 +39,7 @@ export default function MyApp(props) {
   //https://australia-southeast1-socialape-67dbc.cloudfunctions.net
 
   axios.defaults.baseURL =
-    "https://australia-southeast1-socialape-67dbc.cloudfunctions.net/api";
+    "http://localhost:5000/socialape-67dbc/australia-southeast1/api";
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
