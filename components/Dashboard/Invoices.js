@@ -5,12 +5,10 @@ import axios from "axios";
 
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
+
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
-import AttachMoney from "@material-ui/icons/AttachMoney";
-import DraftsIcon from "@material-ui/icons/Drafts";
-import EmailIcon from "@material-ui/icons/Email";
+
 import ListSubheader from "@material-ui/core/ListSubheader";
 import LinearProgress from "@material-ui/core/LinearProgress";
 

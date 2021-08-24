@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { connect } from "react-redux";
 
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/styles/withStyles";
@@ -14,7 +13,6 @@ import PaymentConfirmation from "./PaymentConfirmation";
 import SuccessfulPaymentDialog from "./SuccessfulPaymentDialog";
 
 import axios from "axios";
-import { Payment } from "@material-ui/icons";
 
 const Earnings = (props) => {
   const { classes, invoices, setLoadingInvoices } = props;
