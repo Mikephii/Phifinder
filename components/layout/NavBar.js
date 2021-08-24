@@ -15,7 +15,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
 //icons
-import Phifinder from "../../public/images/logo2.svg";
+//import Phifinder from "../../public/images/logo2.svg";
 
 //redux stuff
 import { connect } from "react-redux";
@@ -67,8 +67,14 @@ const NavBar = (props) => {
               <Link href="/login" passHref>
                 <Button color="primary">Login</Button>
               </Link>
+
               <Link href="/home" passHref>
-                <Image src="../../public/images/logo2.svg" alt="Phifinder" />
+                <Image
+                  src="/images/logo2.svg"
+                  height="50"
+                  width="100"
+                  alt="Phifinder"
+                />
               </Link>
 
               <Link href="/signup" passHref>
