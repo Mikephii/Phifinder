@@ -16,13 +16,6 @@ import { SET_AUTHENTICATED } from "../redux/types";
 import { logoutUser, getUserData } from "../redux/actions/userActions";
 import jwtDecode from "jwt-decode";
 
-//STRIPE STUFF
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-const promise = loadStripe(
-  "pk_test_51JLfohDx0SeN3CQimSkDHnlgUEdFwEyHFRWqtOegcv4eoFULJYdfp7TW2jQhOtLb3e9Ww0689y5eRzfRhk8cjjWt00Gh5W96Lf"
-);
-
 export default function MyApp(props) {
   const { Component, pageProps } = props;
 
