@@ -27,12 +27,11 @@ export default function MyApp(props) {
     }
   }, []);
 
-  //https://615048577588.ngrok.io/australia-southeast1/api/webhook
   //http://localhost:5000/socialape-67dbc/australia-southeast1/
   //https://australia-southeast1-socialape-67dbc.cloudfunctions.net
 
   axios.defaults.baseURL =
-    "http://localhost:5000/socialape-67dbc/australia-southeast1/api";
+    "https://australia-southeast1-socialape-67dbc.cloudfunctions.net/api";
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {

@@ -22,7 +22,7 @@ const BottomNavigationButton = (props) => {
           }}
         >
           {icon}
-          <Typography style={{ fontSize: 10 }}>{label}</Typography>
+          <Typography style={{ fontSize: 12 }}>{label}</Typography>
         </div>
       </Button>
     </Link>
