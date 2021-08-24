@@ -5,38 +5,23 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 
 //Components
-import MyButton from "../../utility/MyButton";
-import NewPost from "../post/NewPost";
+
 import Notifications from "./Notifications";
-import FeedController from "./FeedController";
+
 import NavMenu from "./NavMenu";
 //MUI stuff
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import HideOnScroll from "./HideOnScroll";
-import { Typography } from "@material-ui/core";
-import Select from "@material-ui/core/Select";
-import { FormControl } from "@material-ui/core";
-import { InputLabel } from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
+
 //icons
 import Phifinder from "../../public/images/logo2.svg";
-import AddIcon from "@material-ui/icons/Add";
-
-import NotificationsIcon from "@material-ui/icons/Notifications";
 
 //redux stuff
 import { connect } from "react-redux";
 
 const NavBar = (props) => {
   const { authenticated } = props;
-
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
 
   return (
     <Fragment>
@@ -83,7 +68,7 @@ const NavBar = (props) => {
                 <Button color="primary">Login</Button>
               </Link>
               <Link href="/home" passHref>
-                <Image src={Phifinder} alt="Phifinder" />
+                <Image src="../../public/images/logo2.svg" alt="Phifinder" />
               </Link>
 
               <Link href="/signup" passHref>
