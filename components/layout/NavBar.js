@@ -48,7 +48,12 @@ const NavBar = (props) => {
               <NavMenu />
               <Link href="/home" passHref>
                 <Link href="/home" passHref>
-                  <Image src={Phifinder} alt="Phifinder" />
+                  <Image
+                    src="/images/logo2.svg"
+                    height="50"
+                    width="100"
+                    alt="Phifinder"
+                  />
                 </Link>
               </Link>
               <Notifications />
